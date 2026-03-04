@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kino Sala</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="filmovi.css"/>
+</head>
+<body>
+
+<header>
+  <div class="curtain-left"></div>
+  <div class="curtain-right"></div>
+  <div class="logo">Kino <span>Adi</span> Arslanagić</div>
+  <div class="tagline">Rezervacija mjesta &mdash; Sala 1</div>
+</header>
+
+<nav>
+  <a href="#">Repertoar</a>
+  <a href="#">Sala 1</a>
+  <a href="#">Sala 2</a>
+  <a href="#">Kontakt</a>
+</nav>
+
+<div class="hero">
+  <div class="screen-label">Ekran</div>
+  <div class="screen"></div>
+</div>
+
+<div class="cinema-hall" id="hall"></div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-seat free"></div> Slobodno</div>
+  <div class="legend-item"><div class="legend-seat taken"></div> Zauzeto</div>
+  <div class="legend-item"><div class="legend-seat selected"></div> Odabrano</div>
+  <div class="legend-item"><div class="legend-seat vip"></div> VIP</div>
+</div>
+
+<div class="info-panel">
+  <div class="info-block">
+    <div class="label">Film</div>
+    <div class="value" style="font-size:1rem;">Interstellar</div>
+  </div>
+  <div class="info-block">
+    <div class="label">Odabrana mjesta</div>
+    <div class="value red" id="selectedCount">0</div>
+  </div>
+  <div class="info-block">
+    <div class="label">Ukupno</div>
+    <div class="value" id="totalPrice">0 KM</div>
+  </div>
+</div>
+
+<div class="btn-wrap">
+  <button class="btn-rezervisi" id="btnRez" disabled onclick="rezervisi()">Rezerviši mjesta</button>
+</div>
+
+<footer>
+  &copy; 2024 Kino Adi Arslanagić &mdash; Sva prava zadržana
+</footer>
+
+<div class="notif" id="notif">✓ Rezervacija uspješna!</div>
+
+<script>
+  const ROWS = ['A','B','C','D','E','F','G','H','I','J'];
+  const SEATS_PER_ROW = 16;
+  const VIP_ROWS = ['A','B'];
+  const PRICE_REGULAR = 8;
+  const PRICE_VIP = 14;
+
+  const takenSeats = new Set([
+    'C-4','C-5','C-6','D-7','D-8','E-3','E-10','E-11',
+    'F-5','F-6','F-9','G-4','G-12','H-7','H-8','H-9',
+    'B-3','B-10','A-6','A-7','I-5','I-6','J-8'
+  ]);
+
+  let selected = new Set();
+
+  function buildHall() {
+    const hall = document.getElementById('hall');
+    hall.innerHTML = '';
+
+    ROWS.forEach(row => {
+      const rowEl = document.createElement('div');
+      rowEl.className = 'row';
+
+      const labelL = document.createElement('div');
+      labelL.className = 'row-label';
+      labelL.textContent = row;
+      rowEl.appendChild(labelL);
+
+      for (let s = 1; s <= SEATS_PER_ROW; s++) {
+        if (s === 5 || s === 13) {
+          const aisle = document.createElement('div');
+          aisle.className = 'aisle';
+          rowEl.appendChild(aisle);
+        }
+
+        const id = `${row}-${s}`;
+        const btn = document.createElement('button');
+        btn.className = 'seat' + (VIP_ROWS.includes(row) ? ' vip' : '');
+        btn.title = `Red ${row}, Sjedalo ${s}`;
+        btn.dataset.id = id;
+
+        if (takenSeats.has(id)) {
+          btn.classList.add('taken');
+          btn.disabled = true;
+        } else if (selected.has(id)) {
+          btn.classList.add('selected');
+        } else {
+          btn.classList.add('free');
+        }
+
+        btn.addEventListener('click', () => toggleSeat(id, btn, VIP_ROWS.includes(row)));
+        rowEl.appendChild(btn);
+      }
+
+      const labelR = document.createElement('div');
+      labelR.className = 'row-label';
+      labelR.textContent = row;
+      rowEl.appendChild(labelR);
+
+      hall.appendChild(rowEl);
+    });
+  }
+
+  function toggleSeat(id, btn, isVip) {
+    if (selected.has(id)) {
+      selected.delete(id);
+      btn.classList.remove('selected');
+      btn.classList.add('free');
+    } else {
+      selected.add(id);
+      btn.classList.remove('free');
+      btn.classList.add('selected');
+    }
+    updateInfo();
+  }
+
+  function updateInfo() {
+    let total = 0;
+    selected.forEach(id => {
+      const row = id.split('-')[0];
+      total += VIP_ROWS.includes(row) ? PRICE_VIP : PRICE_REGULAR;
+    });
+    document.getElementById('selectedCount').textContent = selected.size;
+    document.getElementById('totalPrice').textContent = total + ' KM';
+    document.getElementById('btnRez').disabled = selected.size === 0;
+  }
+
+  function rezervisi() {
+    selected.forEach(id => takenSeats.add(id));
+    selected.clear();
+    buildHall();
+    updateInfo();
+
+    const notif = document.getElementById('notif');
+    notif.classList.add('show');
+    setTimeout(() => notif.classList.remove('show'), 3000);
+  }
+
+  buildHall();
+</script>
+</body>
+</html>

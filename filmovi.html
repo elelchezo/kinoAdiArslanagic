@@ -1,166 +1,151 @@
 <!DOCTYPE html>
 <html lang="bs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kino Sala</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="filmovi.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmovi - Kino Sala</title>
+    <link rel="stylesheet" href="filmovi.css">
 </head>
 <body>
 
-<header>
-  <div class="curtain-left"></div>
-  <div class="curtain-right"></div>
-  <div class="logo">Kino <span>Adi</span> Arslanagić</div>
-  <div class="tagline">Rezervacija mjesta &mdash; Sala 1</div>
-</header>
+    <!-- Meni organizovan kao nepobrojana lista -->
+    <nav class="glavni-meni">
+        <ul>
+            <li><a href="filmovi.html" class="active">Filmovi</a></li>
+            <li><a href="raspored.html">Raspored</a></li>
+            <li><a href="sala.html">Sala</a></li>
+        </ul>
+    </nav>
 
-<nav>
-  <a href="#">Repertoar</a>
-  <a href="#">Sala 1</a>
-  <a href="#">Sala 2</a>
-  <a href="#">Kontakt</a>
-</nav>
+    <!-- Prazan prostor da sadrzaj ne podleti pod fiksni meni na desktopu -->
+    <div class="menu-spacer"></div>
 
-<div class="hero">
-  <div class="screen-label">Ekran</div>
-  <div class="screen"></div>
-</div>
+    <main class="sadrzaj">
+        
+        <!-- Sekcija Akcija sa posebnim id-em -->
+        <div id="akcija" class="genre-section">
+            <h2 class="genre-title">Akcija</h2>
+            <div class="movies-grid">
+                <div class="movie-card white">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=TDK" alt="The Dark Knight">
+                    <div class="movie-info"><h3>The Dark Knight</h3><p>2h 32min</p></div>
+                </div>
+                <div class="movie-card white">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Matrix" alt="The Matrix">
+                    <div class="movie-info"><h3>The Matrix</h3><p>2h 16min</p></div>
+                </div>
+                <div class="movie-card powderblue">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Mad+Max" alt="Mad Max">
+                    <div class="movie-info"><h3>Mad Max</h3><p>2h 00min</p></div>
+                </div>
+                <div class="movie-card powderblue">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=John+Wick" alt="John Wick">
+                    <div class="movie-info"><h3>John Wick</h3><p>1h 41min</p></div>
+                </div>
+                <div class="movie-card gray">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Die+Hard" alt="Die Hard">
+                    <div class="movie-info"><h3>Die Hard</h3><p>2h 12min</p></div>
+                </div>
+            </div>
+        </div>
 
-<div class="cinema-hall" id="hall"></div>
+        <!-- Sekcija Drama sa posebnim id-em -->
+        <div id="drama" class="genre-section">
+            <h2 class="genre-title">Drama</h2>
+            <div class="movies-grid">
+                <div class="movie-card white">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Godfather" alt="The Godfather">
+                    <div class="movie-info"><h3>The Godfather</h3><p>2h 55min</p></div>
+                </div>
+                <div class="movie-card white">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Shawshank" alt="Shawshank Redemption">
+                    <div class="movie-info"><h3>Shawshank Redemption</h3><p>2h 22min</p></div>
+                </div>
+                <div class="movie-card powderblue">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Forrest" alt="Forrest Gump">
+                    <div class="movie-info"><h3>Forrest Gump</h3><p>2h 22min</p></div>
+                </div>
+                <div class="movie-card white">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Fight+Club" alt="Fight Club">
+                    <div class="movie-info"><h3>Fight Club</h3><p>2h 19min</p></div>
+                </div>
+                <div class="movie-card gray">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Schindler" alt="Schindler's List">
+                    <div class="movie-info"><h3>Schindler's List</h3><p>3h 15min</p></div>
+                </div>
+            </div>
+        </div>
 
-<div class="legend">
-  <div class="legend-item"><div class="legend-seat free"></div> Slobodno</div>
-  <div class="legend-item"><div class="legend-seat taken"></div> Zauzeto</div>
-  <div class="legend-item"><div class="legend-seat selected"></div> Odabrano</div>
-  <div class="legend-item"><div class="legend-seat vip"></div> VIP</div>
-</div>
+        <!-- Sekcija Komedija sa posebnim id-em -->
+        <div id="komedija" class="genre-section">
+            <h2 class="genre-title">Komedija</h2>
+            <div class="movies-grid">
+                <div class="movie-card white">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Superbad" alt="Superbad">
+                    <div class="movie-info"><h3>Superbad</h3><p>1h 53min</p></div>
+                </div>
+                <div class="movie-card white">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Hangover" alt="The Hangover">
+                    <div class="movie-info"><h3>The Hangover</h3><p>1h 40min</p></div>
+                </div>
+                <div class="movie-card powderblue">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Home+Alone" alt="Home Alone">
+                    <div class="movie-info"><h3>Home Alone</h3><p>1h 43min</p></div>
+                </div>
+                <div class="movie-card gray">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Borat" alt="Borat">
+                    <div class="movie-info"><h3>Borat</h3><p>1h 24min</p></div>
+                </div>
+                <div class="movie-card gray">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Bridesmaids" alt="Bridesmaids">
+                    <div class="movie-info"><h3>Bridesmaids</h3><p>2h 05min</p></div>
+                </div>
+            </div>
+        </div>
 
-<div class="info-panel">
-  <div class="info-block">
-    <div class="label">Film</div>
-    <div class="value" style="font-size:1rem;">Interstellar</div>
-  </div>
-  <div class="info-block">
-    <div class="label">Odabrana mjesta</div>
-    <div class="value red" id="selectedCount">0</div>
-  </div>
-  <div class="info-block">
-    <div class="label">Ukupno</div>
-    <div class="value" id="totalPrice">0 KM</div>
-  </div>
-</div>
+        <!-- Sekcija Animirani sa posebnim id-em -->
+        <div id="animirani" class="genre-section">
+            <h2 class="genre-title">Animirani</h2>
+            <div class="movies-grid">
+                <div class="movie-card white">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Lion+King" alt="The Lion King">
+                    <div class="movie-info"><h3>The Lion King</h3><p>1h 28min</p></div>
+                </div>
+                <div class="movie-card white">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Toy+Story" alt="Toy Story">
+                    <div class="movie-info"><h3>Toy Story</h3><p>1h 21min</p></div>
+                </div>
+                <div class="movie-card powderblue">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Shrek" alt="Shrek">
+                    <div class="movie-info"><h3>Shrek</h3><p>1h 30min</p></div>
+                </div>
+                <div class="movie-card powderblue">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Nemo" alt="Finding Nemo">
+                    <div class="movie-info"><h3>Finding Nemo</h3><p>1h 40min</p></div>
+                </div>
+                <div class="movie-card gray">
+                    <img src="https://via.placeholder.com/200x250/ccc/fff?text=Frozen" alt="Frozen">
+                    <div class="movie-info"><h3>Frozen</h3><p>1h 42min</p></div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-<div class="btn-wrap">
-  <button class="btn-rezervisi" id="btnRez" disabled onclick="rezervisi()">Rezerviši mjesta</button>
-</div>
+    <!-- Legenda (Samo klase, bez inline stila) -->
+    <div class="sticky-legend">
+        <div class="legend-item">
+            <div class="legend-color color-white"></div>
+            <span>Trenutno u kinima</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color color-powderblue"></div>
+            <span>Uskoro</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color color-gray"></div>
+            <span>Nije u ponudi</span>
+        </div>
+    </div>
 
-<footer>
-  &copy; 2024 Kino Adi Arslanagić &mdash; Sva prava zadržana
-</footer>
-
-<div class="notif" id="notif">✓ Rezervacija uspješna!</div>
-
-<script>
-  const ROWS = ['A','B','C','D','E','F','G','H','I','J'];
-  const SEATS_PER_ROW = 16;
-  const VIP_ROWS = ['A','B'];
-  const PRICE_REGULAR = 8;
-  const PRICE_VIP = 14;
-
-  const takenSeats = new Set([
-    'C-4','C-5','C-6','D-7','D-8','E-3','E-10','E-11',
-    'F-5','F-6','F-9','G-4','G-12','H-7','H-8','H-9',
-    'B-3','B-10','A-6','A-7','I-5','I-6','J-8'
-  ]);
-
-  let selected = new Set();
-
-  function buildHall() {
-    const hall = document.getElementById('hall');
-    hall.innerHTML = '';
-
-    ROWS.forEach(row => {
-      const rowEl = document.createElement('div');
-      rowEl.className = 'row';
-
-      const labelL = document.createElement('div');
-      labelL.className = 'row-label';
-      labelL.textContent = row;
-      rowEl.appendChild(labelL);
-
-      for (let s = 1; s <= SEATS_PER_ROW; s++) {
-        if (s === 5 || s === 13) {
-          const aisle = document.createElement('div');
-          aisle.className = 'aisle';
-          rowEl.appendChild(aisle);
-        }
-
-        const id = `${row}-${s}`;
-        const btn = document.createElement('button');
-        btn.className = 'seat' + (VIP_ROWS.includes(row) ? ' vip' : '');
-        btn.title = `Red ${row}, Sjedalo ${s}`;
-        btn.dataset.id = id;
-
-        if (takenSeats.has(id)) {
-          btn.classList.add('taken');
-          btn.disabled = true;
-        } else if (selected.has(id)) {
-          btn.classList.add('selected');
-        } else {
-          btn.classList.add('free');
-        }
-
-        btn.addEventListener('click', () => toggleSeat(id, btn, VIP_ROWS.includes(row)));
-        rowEl.appendChild(btn);
-      }
-
-      const labelR = document.createElement('div');
-      labelR.className = 'row-label';
-      labelR.textContent = row;
-      rowEl.appendChild(labelR);
-
-      hall.appendChild(rowEl);
-    });
-  }
-
-  function toggleSeat(id, btn, isVip) {
-    if (selected.has(id)) {
-      selected.delete(id);
-      btn.classList.remove('selected');
-      btn.classList.add('free');
-    } else {
-      selected.add(id);
-      btn.classList.remove('free');
-      btn.classList.add('selected');
-    }
-    updateInfo();
-  }
-
-  function updateInfo() {
-    let total = 0;
-    selected.forEach(id => {
-      const row = id.split('-')[0];
-      total += VIP_ROWS.includes(row) ? PRICE_VIP : PRICE_REGULAR;
-    });
-    document.getElementById('selectedCount').textContent = selected.size;
-    document.getElementById('totalPrice').textContent = total + ' KM';
-    document.getElementById('btnRez').disabled = selected.size === 0;
-  }
-
-  function rezervisi() {
-    selected.forEach(id => takenSeats.add(id));
-    selected.clear();
-    buildHall();
-    updateInfo();
-
-    const notif = document.getElementById('notif');
-    notif.classList.add('show');
-    setTimeout(() => notif.classList.remove('show'), 3000);
-  }
-
-  buildHall();
-</script>
 </body>
 </html>

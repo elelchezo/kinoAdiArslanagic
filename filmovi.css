@@ -1,345 +1,163 @@
-:root {
-  --red: #c0392b;
-  --gold: #d4a843;
-  --dark: #0a0a0f;
-  --dark2: #13131a;
-  --dark3: #1e1e2a;
-  --light: #f5f0e8;
-  --muted: #888;
+/* kino css/filmovi.css */
+
+.genre-section { margin-bottom: 40px; }
+
+.genre-title {
+    font-size: 20px; margin-bottom: 15px; color: #333;
+    border-bottom: 1px solid #ddd; padding-bottom: 5px;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* Grid raspored po zahtjevima (5 elemenata po 200px) */
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 200px);
+    gap: 10px; /* Minimalno 10px razmaka */
+    justify-content: center;
+}
+
+/* Kartica fiksno 200px širine */
+.movie-card {
+    width: 200px; 
+    border-radius: 6px; 
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex; 
+    flex-direction: column;
+}
+
+.movie-card img {
+    width: 200px; height: 250px; object-fit: cover; display: block;
+}
+
+.movie-info { padding: 12px 10px; flex-grow: 1; }
+.movie-info h3 { font-size: 14px; margin-bottom: 5px; color: #111; }
+.movie-info p { font-size: 12px; color: #555; }
+
+/* Status boje za pozadinu filma (po zahtjevima) */
+.white .movie-info { background-color: white; }
+.powderblue .movie-info { background-color: powderblue; }
+.gray .movie-info { background-color: gray; }
+.gray .movie-info h3, .gray .movie-info p { color: white; }
+
+/* Sticky Traka Legenda */
+.sticky-legend {
+    position: fixed; bottom: 0; left: 0; width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    display: flex; justify-content: center; gap: 40px;
+    padding: 12px 20px; z-index: 1000;
+}
+
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #555; }
+.legend-color { width: 16px; height: 16px; border-radius: 3px; border: 1px solid #ccc; }
+
+/* Klase za boje u legendi (Umjesto inline CSS-a) */
+.color-white { background-color: white; }
+.color-powderblue { background-color: powderblue; }
+.color-gray { background-color: gray; }
+
+/* RESPONSIVNOST PO ZADATKU */
+
+/* Na 1080px grid ostaje repeat(5, 200px) */
+
+/* Na 800px - 3 elementa u redu */
+@media (max-width: 1079px) and (min-width: 800px) {
+    .movies-grid {
+        grid-template-columns: repeat(3, 200px);
+    }
+}
+
+/* Prijelaz (za tablete) */
+@media (max-width: 799px) and (min-width: 300px) {
+    .movies-grid {
+        grid-template-columns: repeat(2, 200px);
+    }
+}
+
+/* Minimalna širina 300px, ispod idu jedan ispod drugog */
+@media (max-width: 500px) {
+    .movies-grid {
+        grid-template-columns: 200px;
+    }
+    .sticky-legend { gap: 15px; flex-wrap: wrap; justify-content: center; }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
 body {
-  background: var(--dark);
-  color: var(--light);
-  font-family: 'Josefin Sans', sans-serif;
-  min-height: 100vh;
-  overflow-x: hidden;
+    background-color: #f8f9fa;
+    color: #333;
 }
 
-/* ===== HEADER ===== */
-header {
-  position: relative;
-  text-align: center;
-  padding: 60px 20px 40px;
-  background: linear-gradient(180deg, #000 0%, var(--dark) 100%);
-  border-bottom: 1px solid #2a2a3a;
+/* Fiksiran meni (Zahtjev: "Meni je fiksiran za vrh prozora") */
+.glavni-meni {
+    background-color: #1c283d;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
-.curtain-left, .curtain-right {
-  position: absolute;
-  top: 0;
-  width: 120px;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--red) 0%, #7b1a13 60%, transparent 100%);
-  opacity: 0.85;
-  animation: curtainSway 6s ease-in-out infinite alternate;
-}
-.curtain-left { left: 0; transform-origin: top left; clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%); }
-.curtain-right { right: 0; transform-origin: top right; clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%); animation-direction: alternate-reverse; }
-
-@keyframes curtainSway {
-  from { transform: skewY(-1deg); }
-  to { transform: skewY(1deg); }
+.glavni-meni ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    max-width: 1080px;
+    margin: 0 auto;
 }
 
-.logo {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-style: italic;
-  color: var(--gold);
-  letter-spacing: 2px;
-  text-shadow: 0 0 40px rgba(212,168,67,0.4);
-  animation: fadeDown 1s ease both;
+.glavni-meni ul li {
+    flex: 1;
+    text-align: center;
 }
 
-.logo span { color: var(--light); font-style: normal; }
-
-.tagline {
-  font-size: 0.85rem;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 8px;
-  animation: fadeDown 1s 0.2s ease both;
+.glavni-meni ul li a {
+    display: block;
+    padding: 15px 0;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
 }
 
-@keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+.glavni-meni ul li a:hover, .glavni-meni ul li a.active {
+    background-color: #2a3a5a;
 }
 
-/* ===== NAV ===== */
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  padding: 18px;
-  background: var(--dark2);
-  border-bottom: 1px solid #2a2a3a;
+/* Odvajanje sadržaja od fiksnog menija */
+.menu-spacer {
+    height: 50px;
 }
 
-nav a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 0.78rem;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  transition: color 0.3s;
-  position: relative;
-  padding-bottom: 4px;
-}
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 0; height: 1px;
-  background: var(--gold);
-  transition: width 0.3s;
-}
-nav a:hover { color: var(--gold); }
-nav a:hover::after { width: 100%; }
-
-/* ===== HERO - SCREEN ===== */
-.hero {
-  position: relative;
-  margin: 50px auto 0;
-  max-width: 900px;
-  padding: 0 20px;
-  animation: fadeUp 1s 0.4s ease both;
+/* Kontejner za sadržaj svake stranice */
+.sadrzaj {
+    max-width: 1080px;
+    margin: 20px auto;
+    padding: 0 20px 80px 20px;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+.page-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #222;
 }
 
-.screen-label {
-  text-align: center;
-  font-size: 0.7rem;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-
-.screen {
-  width: 100%;
-  height: 12px;
-  background: linear-gradient(to bottom, #fff 0%, rgba(255,255,255,0.05) 100%);
-  border-radius: 50%;
-  box-shadow: 0 0 60px 10px rgba(255,255,255,0.12), 0 0 120px 30px rgba(180,180,255,0.06);
-  margin-bottom: 6px;
-}
-
-/* ===== SEATS ===== */
-.cinema-hall {
-  max-width: 900px;
-  margin: 30px auto 60px;
-  padding: 0 20px;
-  animation: fadeUp 1s 0.6s ease both;
-}
-
-.row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-  gap: 6px;
-}
-
-.row-label {
-  font-size: 0.65rem;
-  color: var(--muted);
-  letter-spacing: 2px;
-  width: 20px;
-  text-align: center;
-  flex-shrink: 0;
-}
-
-.seat {
-  width: 28px;
-  height: 26px;
-  border-radius: 6px 6px 3px 3px;
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.15s, box-shadow 0.15s;
-  border: none;
-  outline: none;
-}
-
-.seat::before {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 3px; right: 3px;
-  height: 5px;
-  background: inherit;
-  filter: brightness(0.7);
-  border-radius: 0 0 3px 3px;
-}
-
-.seat.free {
-  background: linear-gradient(135deg, #2d2d4a, #1e1e35);
-  border: 1px solid #3a3a5a;
-}
-.seat.free:hover {
-  background: linear-gradient(135deg, var(--gold), #b8922e);
-  border-color: var(--gold);
-  transform: translateY(-3px) scale(1.1);
-  box-shadow: 0 6px 20px rgba(212,168,67,0.4);
-}
-
-.seat.taken {
-  background: linear-gradient(135deg, #3a1a1a, #2a1010);
-  border: 1px solid #5a2a2a;
-  cursor: not-allowed;
-}
-
-.seat.selected {
-  background: linear-gradient(135deg, var(--red), #8b1a13);
-  border-color: var(--red);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(192,57,43,0.5);
-}
-
-.seat.vip {
-  width: 32px;
-  height: 30px;
-}
-.seat.vip.free {
-  background: linear-gradient(135deg, #2a2014, #1a1508);
-  border-color: var(--gold);
-}
-.seat.vip.free:hover {
-  background: linear-gradient(135deg, var(--gold), #b8922e);
-  box-shadow: 0 6px 24px rgba(212,168,67,0.6);
-}
-
-.aisle { width: 20px; flex-shrink: 0; }
-
-/* ===== LEGEND ===== */
-.legend {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin: 20px auto;
-  flex-wrap: wrap;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.72rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.legend-seat {
-  width: 18px; height: 16px;
-  border-radius: 4px 4px 2px 2px;
-  border: 1px solid;
-}
-.legend-seat.free { background: #2d2d4a; border-color: #3a3a5a; }
-.legend-seat.taken { background: #3a1a1a; border-color: #5a2a2a; }
-.legend-seat.selected { background: var(--red); border-color: var(--red); }
-.legend-seat.vip { background: #2a2014; border-color: var(--gold); width: 20px; height: 18px; }
-
-/* ===== INFO PANEL ===== */
-.info-panel {
-  max-width: 700px;
-  margin: 0 auto 30px;
-  background: var(--dark2);
-  border: 1px solid #2a2a3a;
-  border-radius: 4px;
-  padding: 30px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-  animation: fadeUp 1s 0.8s ease both;
-}
-
-.info-block { text-align: center; }
-.info-block .label {
-  font-size: 0.65rem;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 6px;
-}
-.info-block .value {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
-  color: var(--gold);
-}
-.info-block .value.red { color: var(--red); }
-
-/* ===== BUTTON ===== */
-.btn-wrap { text-align: center; margin-bottom: 60px; animation: fadeUp 1s 1s ease both; }
-
-.btn-rezervisi {
-  background: var(--red);
-  color: #fff;
-  border: none;
-  padding: 16px 50px;
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  cursor: pointer;
-  border-radius: 2px;
-  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
-  position: relative;
-  overflow: hidden;
-}
-.btn-rezervisi::before {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-  transition: left 0.4s;
-}
-.btn-rezervisi:hover { background: #a93226; box-shadow: 0 8px 30px rgba(192,57,43,0.5); transform: translateY(-2px); }
-.btn-rezervisi:hover::before { left: 100%; }
-.btn-rezervisi:disabled { background: #333; color: var(--muted); cursor: not-allowed; box-shadow: none; transform: none; }
-
-/* ===== FOOTER ===== */
-footer {
-  text-align: center;
-  padding: 30px;
-  border-top: 1px solid #1a1a2a;
-  font-size: 0.65rem;
-  letter-spacing: 3px;
-  color: #444;
-  text-transform: uppercase;
-}
-
-/* ===== NOTIFICATION ===== */
-.notif {
-  position: fixed;
-  bottom: 30px; right: 30px;
-  background: var(--gold);
-  color: #000;
-  padding: 14px 24px;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  border-radius: 2px;
-  transform: translateY(100px);
-  opacity: 0;
-  transition: all 0.4s ease;
-  z-index: 100;
-}
-.notif.show { transform: translateY(0); opacity: 1; }
-
+/* Ako širina ne dozvoljava prikaz u redu, pada jedan ispod drugog na početak stranice */
 @media (max-width: 600px) {
-  .seat { width: 20px; height: 18px; }
-  .aisle { width: 10px; }
-  .info-panel { grid-template-columns: 1fr; }
-  nav { gap: 20px; }
-  nav a { font-size: 0.65rem; letter-spacing: 2px; }
+    .glavni-meni {
+        position: static; /* Prikazuje se na početku, nije fiksiran! */
+    }
+    .glavni-meni ul {
+        flex-direction: column;
+    }
+    .menu-spacer {
+        display: none;
+    }
 }

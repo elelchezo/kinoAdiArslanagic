@@ -1,88 +1,5 @@
 /* kino css/filmovi.css */
 
-.genre-section { margin-bottom: 40px; }
-
-.genre-title {
-    font-size: 20px; margin-bottom: 15px; color: #333;
-    border-bottom: 1px solid #ddd; padding-bottom: 5px;
-}
-
-/* Grid raspored po zahtjevima (5 elemenata po 200px) */
-.movies-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 200px);
-    gap: 10px; /* Minimalno 10px razmaka */
-    justify-content: center;
-}
-
-/* Kartica fiksno 200px širine */
-.movie-card {
-    width: 200px; 
-    border-radius: 6px; 
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    display: flex; 
-    flex-direction: column;
-}
-
-.movie-card img {
-    width: 200px; height: 250px; object-fit: cover; display: block;
-}
-
-.movie-info { padding: 12px 10px; flex-grow: 1; }
-.movie-info h3 { font-size: 14px; margin-bottom: 5px; color: #111; }
-.movie-info p { font-size: 12px; color: #555; }
-
-/* Status boje za pozadinu filma (po zahtjevima) */
-.white .movie-info { background-color: white; }
-.powderblue .movie-info { background-color: powderblue; }
-.gray .movie-info { background-color: gray; }
-.gray .movie-info h3, .gray .movie-info p { color: white; }
-
-/* Sticky Traka Legenda */
-.sticky-legend {
-    position: fixed; bottom: 0; left: 0; width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    border-top: 1px solid #e0e0e0;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-    display: flex; justify-content: center; gap: 40px;
-    padding: 12px 20px; z-index: 1000;
-}
-
-.legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #555; }
-.legend-color { width: 16px; height: 16px; border-radius: 3px; border: 1px solid #ccc; }
-
-/* Klase za boje u legendi (Umjesto inline CSS-a) */
-.color-white { background-color: white; }
-.color-powderblue { background-color: powderblue; }
-.color-gray { background-color: gray; }
-
-/* RESPONSIVNOST PO ZADATKU */
-
-/* Na 1080px grid ostaje repeat(5, 200px) */
-
-/* Na 800px - 3 elementa u redu */
-@media (max-width: 1079px) and (min-width: 800px) {
-    .movies-grid {
-        grid-template-columns: repeat(3, 200px);
-    }
-}
-
-/* Prijelaz (za tablete) */
-@media (max-width: 799px) and (min-width: 300px) {
-    .movies-grid {
-        grid-template-columns: repeat(2, 200px);
-    }
-}
-
-/* Minimalna širina 300px, ispod idu jedan ispod drugog */
-@media (max-width: 500px) {
-    .movies-grid {
-        grid-template-columns: 200px;
-    }
-    .sticky-legend { gap: 15px; flex-wrap: wrap; justify-content: center; }
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -95,7 +12,6 @@ body {
     color: #333;
 }
 
-/* Fiksiran meni (Zahtjev: "Meni je fiksiran za vrh prozora") */
 .glavni-meni {
     background-color: #1c283d;
     position: fixed;
@@ -131,12 +47,10 @@ body {
     background-color: #2a3a5a;
 }
 
-/* Odvajanje sadržaja od fiksnog menija */
 .menu-spacer {
     height: 50px;
 }
 
-/* Kontejner za sadržaj svake stranice */
 .sadrzaj {
     max-width: 1080px;
     margin: 20px auto;
@@ -149,10 +63,9 @@ body {
     color: #222;
 }
 
-/* Ako širina ne dozvoljava prikaz u redu, pada jedan ispod drugog na početak stranice */
 @media (max-width: 600px) {
     .glavni-meni {
-        position: static; /* Prikazuje se na početku, nije fiksiran! */
+        position: static;
     }
     .glavni-meni ul {
         flex-direction: column;
@@ -160,4 +73,69 @@ body {
     .menu-spacer {
         display: none;
     }
+}
+
+.genre-section { margin-bottom: 40px; }
+
+.genre-title {
+    font-size: 20px; margin-bottom: 15px; color: #333;
+    border-bottom: 1px solid #ddd; padding-bottom: 5px;
+}
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 200px);
+    gap: 10px;
+    justify-content: center;
+}
+
+.movie-card {
+    width: 200px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-card img {
+    width: 200px; height: 250px; object-fit: cover; display: block;
+}
+
+.movie-info { padding: 12px 10px; flex-grow: 1; }
+.movie-info h3 { font-size: 14px; margin-bottom: 5px; color: #111; }
+.movie-info p { font-size: 12px; color: #555; }
+
+.white .movie-info { background-color: white; }
+.powderblue .movie-info { background-color: powderblue; }
+.gray .movie-info { background-color: gray; }
+.gray .movie-info h3, .gray .movie-info p { color: white; }
+
+.sticky-legend {
+    position: fixed; bottom: 0; left: 0; width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    display: flex; justify-content: center; gap: 40px;
+    padding: 12px 20px; z-index: 1000;
+}
+
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #555; }
+.legend-color { width: 16px; height: 16px; border-radius: 3px; border: 1px solid #ccc; }
+
+.color-white { background-color: white; }
+.color-powderblue { background-color: powderblue; }
+.color-gray { background-color: gray; }
+
+@media (max-width: 1079px) and (min-width: 800px) {
+    .movies-grid { grid-template-columns: repeat(3, 200px); }
+}
+
+@media (max-width: 799px) and (min-width: 300px) {
+    .movies-grid { grid-template-columns: repeat(2, 200px); }
+}
+
+@media (max-width: 500px) {
+    .movies-grid { grid-template-columns: 200px; }
+    .sticky-legend { gap: 15px; flex-wrap: wrap; justify-content: center; }
 }

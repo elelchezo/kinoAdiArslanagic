@@ -1,0 +1,346 @@
+/* kino css/sala.css  –  SPOJENO: zajednicki + raspored + sala */
+
+
+/* ================================================================
+   ZAJEDNICKI STILOVI  (preuzeto iz zajednicki.css)
+   ================================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+/* Kompenzacija za sticky nav pri scroll na anchor link */
+html {
+    scroll-padding-top: 50px;
+}
+
+/* Header */
+header {
+    background-color: #1c283d;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+/* Fiksiran meni */
+nav {
+    background-color: #1c283d;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+nav ul li {
+    flex: 1;
+    text-align: center;
+}
+
+nav ul li a {
+    display: block;
+    padding: 15px 0;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    background-color: #2a3a5a;
+}
+
+/* Kontejner za sadržaj */
+main {
+    max-width: 1080px;
+    margin: 20px auto;
+    padding: 0 20px 80px 20px;
+}
+
+.page-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+/* Odvajanje između dvije sekcije */
+#raspored {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+#sala {
+    padding-top: 10px;
+}
+
+
+/* ================================================================
+   RASPORED STILOVI  (preuzeto iz raspored.css)
+   ================================================================ */
+
+.schedule-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.date-section {
+    margin-bottom: 30px;
+}
+
+.date-title {
+    background: #1c283d;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.movie-row {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-left: 5px solid #0b8a5b;
+}
+
+.time-box {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0b8a5b;
+    min-width: 80px;
+    border-right: 2px solid #eee;
+    margin-right: 20px;
+}
+
+.movie-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.movie-genre {
+    font-size: 13px;
+    color: #888;
+    margin-top: 4px;
+}
+
+
+/* ================================================================
+   SALA STILOVI  (preuzeto iz sala.css)
+   ================================================================ */
+
+/* Filter kartica */
+.filter-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.filter-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #f8f9fa;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-prikazi {
+    background-color: #1c283d;
+    color: white;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    height: 40px;
+    transition: background 0.2s;
+}
+
+.btn-prikazi:hover {
+    background-color: #2a3a5a;
+}
+
+/* Ostale kartice */
+.info-card, .seating-card, .legend-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.info-card {
+    text-align: center;
+    border-left: 4px solid #0b8a5b;
+    border-radius: 4px;
+}
+
+.info-card h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #111;
+}
+
+.info-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Platno */
+.screen {
+    background-color: #4b556b;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 6px;
+    letter-spacing: 8px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Sjedišta */
+.seats-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.row-label {
+    width: 25px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.seat {
+    width: 35px;
+    height: 35px;
+    border-radius: 4px;
+}
+
+.seat.free     { background-color: #0bd14e; }
+.seat.taken    { background-color: #ff333a; }
+.seat.reserved { background-color: #6b7280; }
+
+/* Legenda */
+.legend-items {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+.legend-item .seat {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}
+
+
+/* ================================================================
+   RESPONSIVNOST
+   ================================================================ */
+
+@media (max-width: 600px) {
+    nav {
+        position: static;
+    }
+    nav ul {
+        flex-direction: column;
+    }
+    .filter-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .btn-prikazi {
+        width: 100%;
+    }
+    .seat {
+        width: 25px;
+        height: 25px;
+    }
+    .row {
+        gap: 6px;
+    }
+    .legend-items {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+}
+
+@media (max-width: 400px) {
+    .seat {
+        width: 20px;
+        height: 20px;
+    }
+    .row-label {
+        width: 15px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sala - Kino Sala</title>
+    <link rel="stylesheet" href="sala.css">
+</head>
+<body>
+
+    <header>
+        <h1>KINO SALA</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="filmovi.html">Filmovi</a></li>
+            <li><a href="#raspored">Raspored</a></li>
+            <li><a href="#sala" class="active">Sala</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <!-- ==================== RASPORED SEKCIJA ==================== -->
+        <section id="raspored">
+            <h2 class="page-title">Raspored projekcija</h2>
+
+            <div class="schedule-container">
+
+                <!-- Dan 1 -->
+                <div class="date-section">
+                    <h2 class="date-title">Danas - 15. Mart 2026.</h2>
+
+                    <div class="movie-row">
+                        <div class="time-box">17:00</div>
+                        <div>
+                            <div class="movie-title">The Dark Knight</div>
+                            <div class="movie-genre">Akcija</div>
+                        </div>
+                    </div>
+
+                    <div class="movie-row">
+                        <div class="time-box">20:30</div>
+                        <div>
+                            <div class="movie-title">The Godfather</div>
+                            <div class="movie-genre">Drama</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dan 2 -->
+                <div class="date-section">
+                    <h2 class="date-title">Sutra - 16. Mart 2026.</h2>
+
+                    <div class="movie-row">
+                        <div class="time-box">15:00</div>
+                        <div>
+                            <div class="movie-title">The Lion King</div>
+                            <div class="movie-genre">Animirani</div>
+                        </div>
+                    </div>
+
+                    <div class="movie-row">
+                        <div class="time-box">18:30</div>
+                        <div>
+                            <div class="movie-title">The Hangover</div>
+                            <div class="movie-genre">Komedija</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== SALA SEKCIJA ==================== -->
+        <section id="sala">
+            <h2 class="page-title">Pregled sjedišta</h2>
+
+            <!-- Statični filter meniji -->
+            <div class="filter-card">
+                <div class="filter-group">
+                    <label for="datumSelect">Datum:</label>
+                    <select id="datumSelect">
+                        <option value="15-03" selected>15. Mart 2026.</option>
+                        <option value="16-03">16. Mart 2026.</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filmSelect">Film:</label>
+                    <select id="filmSelect">
+                        <option value="dark-knight" selected>The Dark Knight</option>
+                        <option value="godfather">The Godfather</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="terminSelect">Termin:</label>
+                    <select id="terminSelect">
+                        <option value="17:00" selected>17:00</option>
+                        <option value="20:30">20:30</option>
+                    </select>
+                </div>
+
+                <button class="btn-prikazi">Prikaži salu</button>
+            </div>
+
+            <!-- Info o projekciji -->
+            <div class="info-card">
+                <h3>The Dark Knight</h3>
+                <p>Datum: 15. Mart 2026. &nbsp;|&nbsp; Termin: 17:00</p>
+            </div>
+
+            <div class="screen">PLATNO</div>
+
+            <!-- Sjedišta kartica (8 redova x 10 sjedišta) -->
+            <div class="seating-card">
+                <div class="seats-container">
+                    <div class="row">
+                        <span class="row-label">A</span>
+                        <div class="seat free"></div><div class="seat free"></div><div class="seat free"></div><div class="seat free"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat reserved"></div>
+                    </div>
+                    <div class="row">
+                        <span class="row-label">B</span>
+                        <div class="seat free"></div><div class="seat free"></div><div class="seat free"></div><div class="seat free"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat reserved"></div>
+                    </div>
+                    <div class="row">
+                        <span class="row-label">C</span>
+                        <div class="seat free"></div><div class="seat free"></div><div class="seat free"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat reserved"></div><div class="seat reserved"></div>
+                    </div>
+                    <div class="row">
+                        <span class="row-label">D</span>
+                        <div class="seat free"></div><div class="seat free"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat reserved"></div><div class="seat reserved"></div>
+                    </div>
+                    <div class="row">
+                        <span class="row-label">E</span>
+                        <div class="seat free"></div><div class="seat free"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat reserved"></div><div class="seat reserved"></div><div class="seat reserved"></div><div class="seat reserved"></div>
+                    </div>
+                    <div class="row">
+                        <span class="row-label">F</span>
+                        <div class="seat free"></div><div class="seat free"></div><div class="seat free"></div><div class="seat free"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat reserved"></div><div class="seat reserved"></div><div class="seat reserved"></div>
+                    </div>
+                    <div class="row">
+                        <span class="row-label">G</span>
+                        <div class="seat free"></div><div class="seat free"></div><div class="seat free"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat reserved"></div><div class="seat reserved"></div>
+                    </div>
+                    <div class="row">
+                        <span class="row-label">H</span>
+                        <div class="seat free"></div><div class="seat free"></div><div class="seat free"></div><div class="seat free"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat taken"></div><div class="seat reserved"></div><div class="seat reserved"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legenda -->
+            <div class="legend-card">
+                <div class="legend-items">
+                    <div class="legend-item"><div class="seat free"></div> Slobodno</div>
+                    <div class="legend-item"><div class="seat taken"></div> Zauzeto</div>
+                    <div class="legend-item"><div class="seat reserved"></div> Rezervisano</div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

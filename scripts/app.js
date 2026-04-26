@@ -1,0 +1,77 @@
+// app.js
+// Jedini izvor podataka o projekcijama.
+// Izvršava se PRIJE DOMContentLoaded u kinoSala.js —
+// puni niz projekcije[], a kinoSala.js ga renderuje.
+
+const podaci = {
+    projekcije: [
+        {
+            film: "The Dark Knight",
+            datum: "15-03",
+            vrijeme: "17:00",
+            sala: 1,
+            sjedista: [
+                { red: "A", broj: 1, status: "slobodno" }, { red: "A", broj: 2, status: "slobodno" }, { red: "A", broj: 3, status: "zauzeto" }, { red: "A", broj: 4, status: "zauzeto" }, { red: "A", broj: 5, status: "slobodno" }, { red: "A", broj: 6, status: "rezervisano" }, { red: "A", broj: 7, status: "slobodno" }, { red: "A", broj: 8, status: "slobodno" }, { red: "A", broj: 9, status: "zauzeto" }, { red: "A", broj: 10, status: "slobodno" },
+                { red: "B", broj: 1, status: "zauzeto" }, { red: "B", broj: 2, status: "zauzeto" }, { red: "B", broj: 3, status: "zauzeto" }, { red: "B", broj: 4, status: "slobodno" }, { red: "B", broj: 5, status: "slobodno" }, { red: "B", broj: 6, status: "slobodno" }, { red: "B", broj: 7, status: "rezervisano" }, { red: "B", broj: 8, status: "rezervisano" }, { red: "B", broj: 9, status: "slobodno" }, { red: "B", broj: 10, status: "zauzeto" },
+                { red: "C", broj: 1, status: "slobodno" }, { red: "C", broj: 2, status: "rezervisano" }, { red: "C", broj: 3, status: "slobodno" }, { red: "C", broj: 4, status: "zauzeto" }, { red: "C", broj: 5, status: "zauzeto" }, { red: "C", broj: 6, status: "slobodno" }, { red: "C", broj: 7, status: "slobodno" }, { red: "C", broj: 8, status: "zauzeto" }, { red: "C", broj: 9, status: "slobodno" }, { red: "C", broj: 10, status: "slobodno" },
+                { red: "D", broj: 1, status: "rezervisano" }, { red: "D", broj: 2, status: "slobodno" }, { red: "D", broj: 3, status: "slobodno" }, { red: "D", broj: 4, status: "slobodno" }, { red: "D", broj: 5, status: "zauzeto" }, { red: "D", broj: 6, status: "zauzeto" }, { red: "D", broj: 7, status: "slobodno" }, { red: "D", broj: 8, status: "rezervisano" }, { red: "D", broj: 9, status: "slobodno" }, { red: "D", broj: 10, status: "slobodno" },
+                { red: "E", broj: 1, status: "slobodno" }, { red: "E", broj: 2, status: "slobodno" }, { red: "E", broj: 3, status: "zauzeto" }, { red: "E", broj: 4, status: "rezervisano" }, { red: "E", broj: 5, status: "slobodno" }, { red: "E", broj: 6, status: "slobodno" }, { red: "E", broj: 7, status: "zauzeto" }, { red: "E", broj: 8, status: "zauzeto" }, { red: "E", broj: 9, status: "slobodno" }, { red: "E", broj: 10, status: "rezervisano" },
+                { red: "F", broj: 1, status: "zauzeto" }, { red: "F", broj: 2, status: "slobodno" }, { red: "F", broj: 3, status: "slobodno" }, { red: "F", broj: 4, status: "zauzeto" }, { red: "F", broj: 5, status: "slobodno" }, { red: "F", broj: 6, status: "rezervisano" }, { red: "F", broj: 7, status: "slobodno" }, { red: "F", broj: 8, status: "slobodno" }, { red: "F", broj: 9, status: "zauzeto" }, { red: "F", broj: 10, status: "slobodno" },
+                { red: "G", broj: 1, status: "slobodno" }, { red: "G", broj: 2, status: "zauzeto" }, { red: "G", broj: 3, status: "rezervisano" }, { red: "G", broj: 4, status: "slobodno" }, { red: "G", broj: 5, status: "slobodno" }, { red: "G", broj: 6, status: "zauzeto" }, { red: "G", broj: 7, status: "slobodno" }, { red: "G", broj: 8, status: "slobodno" }, { red: "G", broj: 9, status: "rezervisano" }, { red: "G", broj: 10, status: "zauzeto" },
+                { red: "H", broj: 1, status: "slobodno" }, { red: "H", broj: 2, status: "slobodno" }, { red: "H", broj: 3, status: "slobodno" }, { red: "H", broj: 4, status: "zauzeto" }, { red: "H", broj: 5, status: "rezervisano" }, { red: "H", broj: 6, status: "slobodno" }, { red: "H", broj: 7, status: "zauzeto" }, { red: "H", broj: 8, status: "slobodno" }, { red: "H", broj: 9, status: "slobodno" }, { red: "H", broj: 10, status: "zauzeto" }
+            ]
+        },
+        {
+            film: "The Godfather",
+            datum: "15-03",
+            vrijeme: "20:30",
+            sala: 1,
+            sjedista: [
+                { red: "A", broj: 1, status: "slobodno" }, { red: "A", broj: 2, status: "slobodno" }, { red: "A", broj: 3, status: "slobodno" }, { red: "A", broj: 4, status: "zauzeto" }, { red: "A", broj: 5, status: "slobodno" }, { red: "A", broj: 6, status: "slobodno" }, { red: "A", broj: 7, status: "rezervisano" }, { red: "A", broj: 8, status: "slobodno" }, { red: "A", broj: 9, status: "slobodno" }, { red: "A", broj: 10, status: "slobodno" },
+                { red: "B", broj: 1, status: "slobodno" }, { red: "B", broj: 2, status: "slobodno" }, { red: "B", broj: 3, status: "zauzeto" }, { red: "B", broj: 4, status: "slobodno" }, { red: "B", broj: 5, status: "rezervisano" }, { red: "B", broj: 6, status: "slobodno" }, { red: "B", broj: 7, status: "slobodno" }, { red: "B", broj: 8, status: "zauzeto" }, { red: "B", broj: 9, status: "slobodno" }, { red: "B", broj: 10, status: "slobodno" },
+                { red: "C", broj: 1, status: "zauzeto" }, { red: "C", broj: 2, status: "slobodno" }, { red: "C", broj: 3, status: "slobodno" }, { red: "C", broj: 4, status: "slobodno" }, { red: "C", broj: 5, status: "slobodno" }, { red: "C", broj: 6, status: "rezervisano" }, { red: "C", broj: 7, status: "slobodno" }, { red: "C", broj: 8, status: "slobodno" }, { red: "C", broj: 9, status: "zauzeto" }, { red: "C", broj: 10, status: "slobodno" },
+                { red: "D", broj: 1, status: "slobodno" }, { red: "D", broj: 2, status: "rezervisano" }, { red: "D", broj: 3, status: "slobodno" }, { red: "D", broj: 4, status: "zauzeto" }, { red: "D", broj: 5, status: "slobodno" }, { red: "D", broj: 6, status: "slobodno" }, { red: "D", broj: 7, status: "slobodno" }, { red: "D", broj: 8, status: "slobodno" }, { red: "D", broj: 9, status: "rezervisano" }, { red: "D", broj: 10, status: "slobodno" },
+                { red: "E", broj: 1, status: "slobodno" }, { red: "E", broj: 2, status: "zauzeto" }, { red: "E", broj: 3, status: "slobodno" }, { red: "E", broj: 4, status: "slobodno" }, { red: "E", broj: 5, status: "slobodno" }, { red: "E", broj: 6, status: "zauzeto" }, { red: "E", broj: 7, status: "slobodno" }, { red: "E", broj: 8, status: "rezervisano" }, { red: "E", broj: 9, status: "slobodno" }, { red: "E", broj: 10, status: "slobodno" },
+                { red: "F", broj: 1, status: "slobodno" }, { red: "F", broj: 2, status: "slobodno" }, { red: "F", broj: 3, status: "rezervisano" }, { red: "F", broj: 4, status: "slobodno" }, { red: "F", broj: 5, status: "zauzeto" }, { red: "F", broj: 6, status: "slobodno" }, { red: "F", broj: 7, status: "slobodno" }, { red: "F", broj: 8, status: "zauzeto" }, { red: "F", broj: 9, status: "slobodno" }, { red: "F", broj: 10, status: "slobodno" },
+                { red: "G", broj: 1, status: "slobodno" }, { red: "G", broj: 2, status: "slobodno" }, { red: "G", broj: 3, status: "zauzeto" }, { red: "G", broj: 4, status: "slobodno" }, { red: "G", broj: 5, status: "rezervisano" }, { red: "G", broj: 6, status: "slobodno" }, { red: "G", broj: 7, status: "slobodno" }, { red: "G", broj: 8, status: "slobodno" }, { red: "G", broj: 9, status: "zauzeto" }, { red: "G", broj: 10, status: "slobodno" },
+                { red: "H", broj: 1, status: "slobodno" }, { red: "H", broj: 2, status: "zauzeto" }, { red: "H", broj: 3, status: "slobodno" }, { red: "H", broj: 4, status: "slobodno" }, { red: "H", broj: 5, status: "slobodno" }, { red: "H", broj: 6, status: "slobodno" }, { red: "H", broj: 7, status: "rezervisano" }, { red: "H", broj: 8, status: "slobodno" }, { red: "H", broj: 9, status: "slobodno" }, { red: "H", broj: 10, status: "zauzeto" }
+            ]
+        },
+        {
+            film: "The Lion King",
+            datum: "16-03",
+            vrijeme: "15:00",
+            sala: 2,
+            sjedista: [
+                { red: "A", broj: 1, status: "slobodno" }, { red: "A", broj: 2, status: "slobodno" }, { red: "A", broj: 3, status: "slobodno" }, { red: "A", broj: 4, status: "slobodno" }, { red: "A", broj: 5, status: "zauzeto" }, { red: "A", broj: 6, status: "slobodno" }, { red: "A", broj: 7, status: "slobodno" }, { red: "A", broj: 8, status: "rezervisano" }, { red: "A", broj: 9, status: "slobodno" }, { red: "A", broj: 10, status: "slobodno" },
+                { red: "B", broj: 1, status: "slobodno" }, { red: "B", broj: 2, status: "zauzeto" }, { red: "B", broj: 3, status: "slobodno" }, { red: "B", broj: 4, status: "slobodno" }, { red: "B", broj: 5, status: "slobodno" }, { red: "B", broj: 6, status: "slobodno" }, { red: "B", broj: 7, status: "rezervisano" }, { red: "B", broj: 8, status: "slobodno" }, { red: "B", broj: 9, status: "slobodno" }, { red: "B", broj: 10, status: "slobodno" },
+                { red: "C", broj: 1, status: "slobodno" }, { red: "C", broj: 2, status: "slobodno" }, { red: "C", broj: 3, status: "zauzeto" }, { red: "C", broj: 4, status: "slobodno" }, { red: "C", broj: 5, status: "slobodno" }, { red: "C", broj: 6, status: "rezervisano" }, { red: "C", broj: 7, status: "slobodno" }, { red: "C", broj: 8, status: "slobodno" }, { red: "C", broj: 9, status: "slobodno" }, { red: "C", broj: 10, status: "zauzeto" },
+                { red: "D", broj: 1, status: "slobodno" }, { red: "D", broj: 2, status: "slobodno" }, { red: "D", broj: 3, status: "slobodno" }, { red: "D", broj: 4, status: "rezervisano" }, { red: "D", broj: 5, status: "slobodno" }, { red: "D", broj: 6, status: "slobodno" }, { red: "D", broj: 7, status: "zauzeto" }, { red: "D", broj: 8, status: "slobodno" }, { red: "D", broj: 9, status: "slobodno" }, { red: "D", broj: 10, status: "slobodno" },
+                { red: "E", broj: 1, status: "zauzeto" }, { red: "E", broj: 2, status: "slobodno" }, { red: "E", broj: 3, status: "slobodno" }, { red: "E", broj: 4, status: "slobodno" }, { red: "E", broj: 5, status: "slobodno" }, { red: "E", broj: 6, status: "rezervisano" }, { red: "E", broj: 7, status: "slobodno" }, { red: "E", broj: 8, status: "slobodno" }, { red: "E", broj: 9, status: "zauzeto" }, { red: "E", broj: 10, status: "slobodno" },
+                { red: "F", broj: 1, status: "slobodno" }, { red: "F", broj: 2, status: "slobodno" }, { red: "F", broj: 3, status: "slobodno" }, { red: "F", broj: 4, status: "slobodno" }, { red: "F", broj: 5, status: "zauzeto" }, { red: "F", broj: 6, status: "slobodno" }, { red: "F", broj: 7, status: "slobodno" }, { red: "F", broj: 8, status: "rezervisano" }, { red: "F", broj: 9, status: "slobodno" }, { red: "F", broj: 10, status: "slobodno" },
+                { red: "G", broj: 1, status: "slobodno" }, { red: "G", broj: 2, status: "slobodno" }, { red: "G", broj: 3, status: "slobodno" }, { red: "G", broj: 4, status: "zauzeto" }, { red: "G", broj: 5, status: "slobodno" }, { red: "G", broj: 6, status: "slobodno" }, { red: "G", broj: 7, status: "slobodno" }, { red: "G", broj: 8, status: "slobodno" }, { red: "G", broj: 9, status: "rezervisano" }, { red: "G", broj: 10, status: "slobodno" },
+                { red: "H", broj: 1, status: "slobodno" }, { red: "H", broj: 2, status: "slobodno" }, { red: "H", broj: 3, status: "zauzeto" }, { red: "H", broj: 4, status: "slobodno" }, { red: "H", broj: 5, status: "slobodno" }, { red: "H", broj: 6, status: "slobodno" }, { red: "H", broj: 7, status: "slobodno" }, { red: "H", broj: 8, status: "rezervisano" }, { red: "H", broj: 9, status: "slobodno" }, { red: "H", broj: 10, status: "slobodno" }
+            ]
+        },
+        {
+            film: "The Hangover",
+            datum: "16-03",
+            vrijeme: "18:30",
+            sala: 2,
+            sjedista: [
+                { red: "A", broj: 1, status: "slobodno" }, { red: "A", broj: 2, status: "zauzeto" }, { red: "A", broj: 3, status: "slobodno" }, { red: "A", broj: 4, status: "slobodno" }, { red: "A", broj: 5, status: "slobodno" }, { red: "A", broj: 6, status: "slobodno" }, { red: "A", broj: 7, status: "slobodno" }, { red: "A", broj: 8, status: "zauzeto" }, { red: "A", broj: 9, status: "rezervisano" }, { red: "A", broj: 10, status: "slobodno" },
+                { red: "B", broj: 1, status: "slobodno" }, { red: "B", broj: 2, status: "slobodno" }, { red: "B", broj: 3, status: "slobodno" }, { red: "B", broj: 4, status: "zauzeto" }, { red: "B", broj: 5, status: "slobodno" }, { red: "B", broj: 6, status: "slobodno" }, { red: "B", broj: 7, status: "slobodno" }, { red: "B", broj: 8, status: "rezervisano" }, { red: "B", broj: 9, status: "slobodno" }, { red: "B", broj: 10, status: "slobodno" },
+                { red: "C", broj: 1, status: "slobodno" }, { red: "C", broj: 2, status: "slobodno" }, { red: "C", broj: 3, status: "slobodno" }, { red: "C", broj: 4, status: "slobodno" }, { red: "C", broj: 5, status: "slobodno" }, { red: "C", broj: 6, status: "zauzeto" }, { red: "C", broj: 7, status: "slobodno" }, { red: "C", broj: 8, status: "slobodno" }, { red: "C", broj: 9, status: "slobodno" }, { red: "C", broj: 10, status: "rezervisano" },
+                { red: "D", broj: 1, status: "slobodno" }, { red: "D", broj: 2, status: "slobodno" }, { red: "D", broj: 3, status: "rezervisano" }, { red: "D", broj: 4, status: "slobodno" }, { red: "D", broj: 5, status: "slobodno" }, { red: "D", broj: 6, status: "zauzeto" }, { red: "D", broj: 7, status: "slobodno" }, { red: "D", broj: 8, status: "slobodno" }, { red: "D", broj: 9, status: "slobodno" }, { red: "D", broj: 10, status: "slobodno" },
+                { red: "E", broj: 1, status: "slobodno" }, { red: "E", broj: 2, status: "slobodno" }, { red: "E", broj: 3, status: "slobodno" }, { red: "E", broj: 4, status: "zauzeto" }, { red: "E", broj: 5, status: "rezervisano" }, { red: "E", broj: 6, status: "slobodno" }, { red: "E", broj: 7, status: "slobodno" }, { red: "E", broj: 8, status: "slobodno" }, { red: "E", broj: 9, status: "slobodno" }, { red: "E", broj: 10, status: "zauzeto" },
+                { red: "F", broj: 1, status: "rezervisano" }, { red: "F", broj: 2, status: "slobodno" }, { red: "F", broj: 3, status: "slobodno" }, { red: "F", broj: 4, status: "slobodno" }, { red: "F", broj: 5, status: "slobodno" }, { red: "F", broj: 6, status: "slobodno" }, { red: "F", broj: 7, status: "zauzeto" }, { red: "F", broj: 8, status: "slobodno" }, { red: "F", broj: 9, status: "slobodno" }, { red: "F", broj: 10, status: "slobodno" },
+                { red: "G", broj: 1, status: "slobodno" }, { red: "G", broj: 2, status: "slobodno" }, { red: "G", broj: 3, status: "slobodno" }, { red: "G", broj: 4, status: "slobodno" }, { red: "G", broj: 5, status: "zauzeto" }, { red: "G", broj: 6, status: "slobodno" }, { red: "G", broj: 7, status: "rezervisano" }, { red: "G", broj: 8, status: "slobodno" }, { red: "G", broj: 9, status: "slobodno" }, { red: "G", broj: 10, status: "slobodno" },
+                { red: "H", broj: 1, status: "slobodno" }, { red: "H", broj: 2, status: "slobodno" }, { red: "H", broj: 3, status: "slobodno" }, { red: "H", broj: 4, status: "slobodno" }, { red: "H", broj: 5, status: "slobodno" }, { red: "H", broj: 6, status: "zauzeto" }, { red: "H", broj: 7, status: "slobodno" }, { red: "H", broj: 8, status: "slobodno" }, { red: "H", broj: 9, status: "rezervisano" }, { red: "H", broj: 10, status: "slobodno" }
+            ]
+        }
+    ]
+};
+
+for (const projekcija of podaci.projekcije) {
+    inicijalizujSalu(projekcija);
+}

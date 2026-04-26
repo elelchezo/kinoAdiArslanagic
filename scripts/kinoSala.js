@@ -44,7 +44,6 @@ function inicijalizujSalu(projekcijaIzAppJs) {
         nazivFilma: projekcijaIzAppJs.film,
         datum: projekcijaIzAppJs.datum,
         vrijeme: projekcijaIzAppJs.vrijeme,
-        brojSale: projekcijaIzAppJs.sala,
         sjedista: sjedista2D
     });
 }
@@ -62,7 +61,6 @@ function validirajPodatke(listaProjekcija) {
             !projekcija ||
             typeof projekcija.nazivFilma !== "string" ||
             typeof projekcija.vrijeme !== "string" ||
-            projekcija.brojSale === undefined ||
             !Array.isArray(projekcija.sjedista) ||
             projekcija.sjedista.length !== 8
         ) {
@@ -130,9 +128,19 @@ function kreirajInfoSekciju(projekcija) {
     const info = document.createElement("div");
     info.className = "info-card";
 
+    // Konvertuj datum iz "15-03" u čitljiv format "15. Mart 2026."
+    const mjeseci = [
+        "", "Januar", "Februar", "Mart", "April", "Maj", "Juni",
+        "Juli", "August", "Septembar", "Oktobar", "Novembar", "Decembar"
+    ];
+    const dijelovi = projekcija.datum.split("-");
+    const dan = parseInt(dijelovi[0]);
+    const mjesec = parseInt(dijelovi[1]);
+    const datumTekst = `${dan}. ${mjeseci[mjesec]} 2026.`;
+
     info.innerHTML = `
         <h3>${projekcija.nazivFilma}</h3>
-        <p>Sala: ${projekcija.brojSale} &nbsp;|&nbsp; Termin: ${projekcija.vrijeme}</p>
+        <p>${datumTekst} &nbsp;|&nbsp; Termin: ${projekcija.vrijeme}</p>
     `;
 
     return info;
@@ -180,14 +188,15 @@ function kreirajSjedista(projekcija) {
                 const trenutniStatus = projekcije[trenutniIndex].sjedista[redIndex][kolonaIndex];
 
                 if (trenutniStatus === "slobodno") {
-                    projekcije[trenutniIndex].sjedista[redIndex][kolonaIndex] = "zauzeto";
-                    localStorage.setItem("projekcije", JSON.stringify(projekcije)); // ← dodaj
+                    projekcije[trenutniIndex].sjedista[redIndex][kolonaIndex] = "rezervisano";
+                    localStorage.setItem("projekcije", JSON.stringify(projekcije));
                     prikaziSalu();
-                } else if (trenutniStatus === "zauzeto") {
+                } else if (trenutniStatus === "rezervisano") {
                     projekcije[trenutniIndex].sjedista[redIndex][kolonaIndex] = "slobodno";
-                    localStorage.setItem("projekcije", JSON.stringify(projekcije)); // ← dodaj
+                    localStorage.setItem("projekcije", JSON.stringify(projekcije));
                     prikaziSalu();
                 }
+                // zauzeto sjedište ostaje nepromijenjeno — ne radi ništa
             });
 
             redDiv.appendChild(sjediste);
